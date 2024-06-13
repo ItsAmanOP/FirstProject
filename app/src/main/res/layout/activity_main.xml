@@ -1,0 +1,65 @@
+<!-- activity_main.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+
+    <EditText
+        android:id="@+id/identifierEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Identifier (Email/Mobile)"/>
+
+    <EditText
+        android:id="@+id/otpEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter OTP"/>
+    <Button
+        android:id="@+id/sendOTPButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/identifierEditText"
+        android:text="Send OTP"/>
+
+    <Button
+        android:id="@+id/verifyOTPButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sendOTPButton"
+        android:text="Verify OTP"/>
+
+    <Button
+        android:id="@+id/retryOTPButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/verifyOTPButton"
+        android:text="Retry OTP"/>
+
+    <Button
+        android:id="@+id/getWidgetProcessButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/retryOTPButton"
+        android:text="Get Widget Process"/>
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/getWidgetProcessButton"
+        android:text="Result will be shown here."
+        android:padding="16dp"/>
+
+    <ProgressBar
+        android:id="@+id/loadingProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+</LinearLayout>
