@@ -51,53 +51,53 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             artifact("$buildDir/outputs/aar/${artifactId}-release.aar")
-            groupId = "io.github.itsamanop"
+            groupId = "io.github.AmanWhozzat"
             artifactId = "msg91com_sendOTP"
             version = "1.0.0"
 
 //            artifact(javadocJar.get())
 
-            pom {
-                name.set("SendOTP")
-                description.set("A library for sending OTP")
-                url.set("https://github.com/ItsAmanOP/sendotplibrary")
-
-                licenses {
-                    license {
-                        name.set("The Apache License, Version 2.0")
-                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                    }
-                }
-
-                developers {
-                    developer {
-                        id.set("amanJI")
-                        name.set("Aman Gour")
-                        email.set("amankumargourh@gmail.com")
-                    }
-                }
-
-                scm {
-                    connection.set("scm:git:github.com/ItsAmanOP/sendotplibrary")
-                    developerConnection.set("scm:git:ssh://github.com/ItsAmanOP/sendotplibrary.git")
-                    url.set("https://github.com/ItsAmanOP/sendotplibrary")
-                }
-            }
-        }
+//            pom {
+//                name.set("SendOTP")
+//                description.set("A library for sending OTP")
+//                url.set("https://github.com/ItsAmanOP/sendotplibrary")
+//
+//                licenses {
+//                    license {
+//                        name.set("The Apache License, Version 2.0")
+//                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+//                    }
+//                }
+//
+//                developers {
+//                    developer {
+//                        id.set("amanJI")
+//                        name.set("Aman Gour")
+//                        email.set("amankumargourh@gmail.com")
+//                    }
+//                }
+//
+//                scm {
+//                    connection.set("scm:git:github.com/ItsAmanOP/sendotplibrary")
+//                    developerConnection.set("scm:git:ssh://github.com/ItsAmanOP/sendotplibrary.git")
+//                    url.set("https://github.com/ItsAmanOP/sendotplibrary")
+//                }
+//            }
+//        }
     }
 
-    repositories {
-        maven {
-            name = "ossrh"
-            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
-            credentials {
-                username = project.findProperty("ossrhUsername") as String? ?: ""
-                password = project.findProperty("ossrhPassword") as String? ?: ""
-            }
-        }
+//    repositories {
+//        maven {
+//            name = "ossrh"
+//            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+//            credentials {
+//                username = project.findProperty("ossrhUsername") as String? ?: ""
+//                password = project.findProperty("ossrhPassword") as String? ?: ""
+//            }
+//        }
     }
 }
 
-signing {
-    sign(publishing.publications["mavenJava"])
-}
+//signing {
+//    sign(publishing.publications["mavenJava"])
+//}
