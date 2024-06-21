@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.firstproject.ui.theme.FirstProjectTheme
-
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -18,8 +17,6 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.msg91com.sendotp.OTPWidget
-//import com.example.firstproject.sendotp.OTPWidget
-//import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -62,19 +59,6 @@ class MainActivity : ComponentActivity() {
         retryOTPButton.setOnClickListener { retryOTP() }
         getWidgetProcessButton.setOnClickListener { getWidgetProcess() }
     }
-
-//    private fun sendOTP() {
-//        val identifier = identifierEditText.text.toString()
-//        CoroutineScope(Dispatchers.Main).launch {
-//            val body = JSONObject().apply {
-//                put("identifier", identifier)
-//                put("widgetId", widgetId)
-//                put("tokenAuth", tokenAuth)
-//            }
-//            val result = OTPWidget.sendOTP(body)
-//            resultTextView.text = result
-//        }
-//    }
 
     private fun sendOTP() {
         showLoading()
@@ -164,11 +148,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        coroutineScope.cancel()
-    }
-
     private fun showLoading() {
         loadingProgressBar.visibility = View.VISIBLE
     }
@@ -177,48 +156,8 @@ class MainActivity : ComponentActivity() {
         loadingProgressBar.visibility = View.GONE
     }
 
-//    private fun verifyOTP() {
-//        val otp = otpEditText.text.toString() // Assuming the OTP is entered in the same field
-////        val requestId = "123" // Provide the actual request ID here
-//        CoroutineScope(Dispatchers.Main).launch {
-//            val body = JSONObject().apply {
-//                put("otp", otp)
-//                put("widgetId", widgetId)
-//                put("tokenAuth", tokenAuth)
-//            }
-//
-//            println(body);
-//            try {
-//                val result = OTPWidget.verifyOTP(body)
-//                resultTextView.text = result
-//            }
-//            catch (error: Exception) {
-//                val e =
-//                println("Error sending OTP: ${error.message}")
-//            }
-//        }
-//    }
-//
-//    private fun retryOTP() {
-//        val requestId = "123" // Provide the actual request ID here
-//        val channel = "email" // Provide the channel for retrying the OTP
-//        CoroutineScope(Dispatchers.Main).launch {
-//            val body = JSONObject().apply {
-//                put("reqId", requestId)
-//                put("channel", channel)
-//            }
-//            val result = OTPWidget.retryOTP(body)
-//            resultTextView.text = result
-//        }
-//    }
-//
-//    private fun getWidgetProcess() {
-//            println("-----------URL------------");
-//            var str = "Fault";
-//        str += "Hello";
-//        CoroutineScope(Dispatchers.Main).launch {
-//            val result = OTPWidget.getWidgetProcess(widgetId, tokenAuth)
-//            resultTextView.text = result
-//        }
-//    }
+    override fun onDestroy() {
+        super.onDestroy()
+        coroutineScope.cancel()
+    }
 }
