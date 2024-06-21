@@ -58,7 +58,7 @@ or
 
 ## Example
 
-https://github.com/Aman12034876/msg91com_sendOTP/blob/755bd559f43eb98ab0bd8cffbcd7ed7b1cd7e9c0/app/src/main/java/com/example/firstproject/MainActivity.kt#L1-L224
+https://github.com/Aman12034876/msg91com_sendOTP/blob/755bd559f43eb98ab0bd8cffbcd7ed7b1cd7e9c0/app/src/main/java/com/example/firstproject/MainActivity.kt#L39-L40
 
 
 # SDK Methods
