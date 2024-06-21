@@ -4,6 +4,7 @@ import org.json.JSONObject
 
 object OTPWidget {
 
+    @JvmStatic
     fun sendOTP(widgetId: String, tokenAuth: String, identifier: String): String {
 
         val payload = JSONObject().apply {
@@ -15,6 +16,7 @@ object OTPWidget {
         return NetworkUtils.post(ApiUrls.sendOTP, payload.toString())
     }
 
+    @JvmStatic
     fun verifyOTP(widgetId: String, tokenAuth: String, otp: String, reqId: String): String {
 
         val payload = JSONObject().apply {
@@ -27,6 +29,7 @@ object OTPWidget {
         return NetworkUtils.post(ApiUrls.verifyOTP, payload.toString())
     }
 
+    @JvmStatic
     fun retryOTP(widgetId: String, tokenAuth: String, retryChannel: Number, reqId: String): String {
 
         val payload = JSONObject().apply {
@@ -39,6 +42,7 @@ object OTPWidget {
         return NetworkUtils.post(ApiUrls.retryOTP, payload.toString())
     }
 
+    @JvmStatic
     fun getWidgetProcess(widgetId: String, tokenAuth: String): String {
 
         val url = ApiUrls.getWidgetProcess

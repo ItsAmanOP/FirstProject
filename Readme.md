@@ -58,7 +58,9 @@ or
 
 ## Example
 
-https://github.com/Aman12034876/msg91com_sendOTP/blob/755bd559f43eb98ab0bd8cffbcd7ed7b1cd7e9c0/app/src/main/java/com/example/firstproject/MainActivity.kt#L39-L40
+For complete example check [MainActivity.kt](https://github.com/Aman12034876/msg91com_sendOTP/blob/755bd559f43eb98ab0bd8cffbcd7ed7b1cd7e9c0/app/src/main/java/com/example/firstproject/MainActivity.kt) of example app.
+
+
 
 
 # SDK Methods
@@ -83,24 +85,22 @@ You can call this method on a button press.
 
 *NOTE:* If you have enabled the invisible option in a widget configuration and you are trying to verify the mobile number with the mobile network then your number will be verified without OTP and if in any case the invisible verification gets fail in between the process then you will receive the normal OTP on your entered number.
 
-```jsx
-const handleSendOtp = async () => {
-  const data = {
-    identifier: '91758XXXXXXX'
-  }
-  const response = await OTPWidget.sendOTP(data);
-  console.log(response);
-}
-```
-**or**
-```jsx
-const handleSendOtp = async () => {
-  const data = {
-    identifier: 'alpha@gmail.com'
-  }
-  const response = await OTPWidget.sendOTP(data);
-  console.log(response);
-}
+```kt
+    private fun handleSendOTP() {
+        val identifier = '91758XXXXXXX'; // or 'example@xyz.com'
+        coroutineScope.launch {
+            try {
+
+                val result = withContext(Dispatchers.IO) {
+                    OTPWidget.sendOTP(widgetId, tokenAuth, identifier)
+                }
+                println("SendOTP Success Message: $message")
+
+            } catch (e: Exception) {
+                println("Error in SendOTP: $e.message")
+            }
+        }
+    }
 ```
 
 ### `retryOTP`
@@ -111,30 +111,65 @@ retryOTP method takes optional channel code for `'SMS-11'`, `'VOICE-4'`, `'EMAIL
 
 *Note:* If the widget uses the default configuration, don't pass the channel as argument.
 
-```jsx
-const handleRetryOtp = async () => {
-   const body = {
-        reqId: '3463***************43931',
-        retryChannel: 11 // Retry channel code (here, SMS:11)
-  }
-  const response = await OTPWidget.retryOTP(body);
-  console.log(response);
-}
+```kt
+    private fun handleRetryOTP(channel: Number) {
+        coroutineScope.launch {
+            try {
+
+                val result = withContext(Dispatchers.IO) {
+                    OTPWidget.retryOTP(widgetId, tokenAuth, reqId, channel)
+                }
+                println("RetryOTP Success Message: $result")
+
+            } catch (e: Exception) {
+                println("Error in RetryOTP: ${e.message}")
+            }
+        }
+    }
 ```
 
 ### `verifyOTP`
 
 The verifyOTP method is used to verify an OTP entered by the user.
 
-```jsx
-const handleVerifyOtp = async () => {
-  const body = {
-        reqId: '3463***************43931',
-        otp: '****'
-  }
-  const response = await OTPWidget.verifyOTP(body);
-  console.log(response);
-}
+```kt
+    private fun handleVerifyOtp() {
+
+        val otp = '****';
+        coroutineScope.launch {
+            try {
+
+                val result = withContext(Dispatchers.IO) {
+                    OTPWidget.verifyOTP(widgetId, tokenAuth, otp, reqId)
+                }
+                println("VerifyOTP Success Message: $result")
+
+            } catch (e: Exception) {
+               println("Error in VerifyOTP: ${e.message}")
+            }
+        }
+    }
+```
+
+### `getWidgetProcess`
+
+This is an ***optional*** method, this will receive the widget configuration data.
+
+```kt
+    private fun getWidgetProcess() {
+        coroutineScope.launch {
+            try {
+
+                val result = withContext(Dispatchers.IO) {
+                    OTPWidget.getWidgetProcess(widgetId, tokenAuth)
+                }
+                println("Widget Data: $result")
+
+            } catch (e: Exception) {
+                println("Error in GetWidgetData: ${e.message}")
+            }
+        }
+    }
 ```
 
 

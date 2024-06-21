@@ -65,11 +65,6 @@ class MainActivity : ComponentActivity() {
         val identifier = identifierEditText.text.toString()
         coroutineScope.launch {
             try {
-                val body = JSONObject().apply {
-                    put("identifier", identifier)
-                    put("widgetId", widgetId)
-                    put("tokenAuth", tokenAuth)
-                }
                 val result = withContext(Dispatchers.IO) {
                     OTPWidget.sendOTP(widgetId, tokenAuth, identifier)
                 }
