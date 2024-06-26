@@ -32,6 +32,7 @@ jobs:
           VERSION_NAME: ${{ github.event.inputs.versionName }}
           GPG_SIGNING_KEY_ID: ${{ secrets.GPG_SIGNING_KEY_ID }}
           GPG_SIGNING_PASSPHRASE_PASSWORD: ${{ secrets.GPG_SIGNING_PASSPHRASE_PASSWORD }}
+          GPG_SIGNING_ARMED_KEY: ${{ secrets.GPG_SIGNING_ARMED_KEY }}
           SONATYPE_USER_NAME: ${{ secrets.SONATYPE_USER_NAME }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
 
@@ -48,6 +49,7 @@ jobs:
           VERSION_NAME: ${{ github.event.inputs.versionName }}
           GPG_SIGNING_KEY_ID: ${{ secrets.GPG_SIGNING_KEY_ID }}
           GPG_SIGNING_PASSPHRASE_PASSWORD: ${{ secrets.GPG_SIGNING_PASSPHRASE_PASSWORD }}
+          GPG_SIGNING_ARMED_KEY: ${{ secrets.GPG_SIGNING_ARMED_KEY }}
           SONATYPE_USER_NAME: ${{ secrets.SONATYPE_USER_NAME }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
 
