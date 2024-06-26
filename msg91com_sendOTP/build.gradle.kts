@@ -6,6 +6,7 @@ plugins {
     id("signing")
 }
 
+val version: String? = System.getenv("VERSION_NAME")
 val sonaTypeUseName: String? = System.getenv("SONATYPE_USER_NAME")
 val sonaTypePassword: String? = System.getenv("SONATYPE_PASSWORD")
 val keyId: String? = System.getenv("GPG_SIGNING_KEY_ID")
@@ -50,7 +51,6 @@ dependencies {
 }
 
 group = "io.github.itsamanop"
-version = "1.0.4"
 val artifactName = "SendOTP"
 val artifactDescription = "A description of my library"
 val artifactUrl = "https://github.com/ItsAmanOP/SendOTP"
