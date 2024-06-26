@@ -92,15 +92,16 @@ afterEvaluate {
         val password = findProperty("signing.password") as String
         val sonaTypeUseName = findProperty("SONATYPE_USER_NAME") as String
         val sonaTypePassword = findProperty("SONATYPE_PASSWORD") as String
-        val secretKeyRingFilePath = findProperty("signing.secretKeyRingFile") as String
+//        val secretKeyRingFilePath = findProperty("signing.secretKeyRingFile") as String
 
         println("Key ID: $keyId") // prints correct key (last 8)
         println("Password: $password") // prints correct passphrase
         println("SONATYPE_USER_NAME: $sonaTypeUseName")
         println("SONATYPE_PASSWORD: $sonaTypePassword")
-        println("Secret Key Ring File Path: $secretKeyRingFilePath")
+//        println("Secret Key Ring File Path: $secretKeyRingFilePath")
 
 //        useInMemoryPgpKeys(keyId, password)
+        useGpgCmd()
         sign(publishing.publications)
     }
 
