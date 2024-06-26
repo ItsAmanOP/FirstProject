@@ -118,8 +118,11 @@ afterEvaluate {
 
     nmcp {
         publishAllPublications {
-            username = findProperty("SONATYPE_USER_NAME") as String
-            password = findProperty("SONATYPE_PASSWORD") as String
+//            username = findProperty("SONATYPE_USER_NAME") as String
+//            password = findProperty("SONATYPE_PASSWORD") as String
+
+            username = sonaTypeUseName
+            password = sonaTypePassword
 //            publicationType = "AUTOMATIC"
             publicationType = "USER_MANAGED"
         }

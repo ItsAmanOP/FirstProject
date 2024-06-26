@@ -28,6 +28,12 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: build
+        env:
+          VERSION_NAME: ${{ github.event.inputs.versionName }}
+          GPG_SIGNING_KEY_ID: ${{ secrets.GPG_SIGNING_KEY_ID }}
+          GPG_SIGNING_PASSPHRASE_PASSWORD: ${{ secrets.GPG_SIGNING_PASSPHRASE_PASSWORD }}
+          SONATYPE_USER_NAME: ${{ secrets.SONATYPE_USER_NAME }}
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
 
       - name: Publish Library
         run: |
