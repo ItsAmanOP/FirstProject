@@ -91,7 +91,7 @@ class MainActivity : ComponentActivity() {
         coroutineScope.launch {
             try {
                 val result = withContext(Dispatchers.IO) {
-                    OTPWidget.verifyOTP(widgetId, tokenAuth, otp, reqId)
+                    OTPWidget.verifyOTP(widgetId, tokenAuth, reqId, otp)
                 }
                 val jsonObject = JSONObject(result)
                 val responseType = jsonObject.getString("type")
@@ -116,7 +116,7 @@ class MainActivity : ComponentActivity() {
         coroutineScope.launch {
             try {
                 val result = withContext(Dispatchers.IO) {
-                    OTPWidget.retryOTP(widgetId, tokenAuth, 4, reqId)
+                    OTPWidget.retryOTP(widgetId, tokenAuth, reqId, 4)
                 }
                 resultTextView.text = result
             } catch (e: Exception) {

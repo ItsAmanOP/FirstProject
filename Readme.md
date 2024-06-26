@@ -19,36 +19,9 @@ After login at MSG91, follow below steps to get your widgetId and authToken:
 
 **Note:** To ensure that this SDK functions correctly within your mobile application, please enable Mobile Integration while configuring the widget.
 
-## Installation (Kotlin)
+## Installation
 
-**Step 1.** Add the JitPack repository to your build file
-
-*Kotlin:* Add it in your root ***settings.gradle.kts*** at the end of repositories:
-```shell
-	dependencyResolutionManagement {
-		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-		repositories {
-			mavenCentral()
-			maven { setUrl("https://jitpack.io") }
-		}
-	}
-```
-
-or
-
-*Java:* Add it in your root build.gradle at the end of repositories:
-
-```shell
-	dependencyResolutionManagement {
-		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-		repositories {
-			mavenCentral()
-			maven { url 'https://jitpack.io' }
-		}
-	}
-```
-
-**Step 2.** Add the dependency
+Add the dependency in ***build.gradle.kts***
 ```shell
 	dependencies {
         implementation 'com.github.Aman12034876:msg91com_sendOTP:1.0.5'
@@ -87,17 +60,21 @@ You can call this method on a button press.
 
 ```kt
     private fun handleSendOTP() {
+        val widgetId = "3461******************38";
+        val tokenAuth = "125*******************TP1";
+
         val identifier = '91758XXXXXXX'; // or 'example@xyz.com'
+        
         coroutineScope.launch {
             try {
 
                 val result = withContext(Dispatchers.IO) {
                     OTPWidget.sendOTP(widgetId, tokenAuth, identifier)
                 }
-                println("SendOTP Success Message: $message")
+                println("Result: $result")
 
             } catch (e: Exception) {
-                println("Error in SendOTP: $e.message")
+                println("Error in SendOTP")
             }
         }
     }
@@ -107,7 +84,7 @@ You can call this method on a button press.
 
 The retryOTP method allows retrying the OTP on desired communication channel.
 <br>
-retryOTP method takes optional channel code for `'SMS-11'`, `'VOICE-4'`, `'EMAIL-3'`, `'WHATSAPP-12'` for retrying otp.
+retryOTP method takes optional channel code for SMS -`11`, VOICE -`4`, 'EMAIL -`3`, WHATSAPP -`12` for retrying otp.
 
 *Note:* If the widget uses the default configuration, don't pass the channel as argument.
 
@@ -119,10 +96,10 @@ retryOTP method takes optional channel code for `'SMS-11'`, `'VOICE-4'`, `'EMAIL
                 val result = withContext(Dispatchers.IO) {
                     OTPWidget.retryOTP(widgetId, tokenAuth, reqId, channel)
                 }
-                println("RetryOTP Success Message: $result")
+                println("Result: $result")
 
             } catch (e: Exception) {
-                println("Error in RetryOTP: ${e.message}")
+                println("Error in RetryOTP")
             }
         }
     }
@@ -140,12 +117,12 @@ The verifyOTP method is used to verify an OTP entered by the user.
             try {
 
                 val result = withContext(Dispatchers.IO) {
-                    OTPWidget.verifyOTP(widgetId, tokenAuth, otp, reqId)
+                    OTPWidget.verifyOTP(widgetId, tokenAuth, reqId, otp)
                 }
-                println("VerifyOTP Success Message: $result")
+                println("Result: $result")
 
             } catch (e: Exception) {
-               println("Error in VerifyOTP: ${e.message}")
+               println("Error in VerifyOTP")
             }
         }
     }
@@ -166,7 +143,7 @@ This is an ***optional*** method, this will receive the widget configuration dat
                 println("Widget Data: $result")
 
             } catch (e: Exception) {
-                println("Error in GetWidgetData: ${e.message}")
+                println("Error in GetWidgetData")
             }
         }
     }

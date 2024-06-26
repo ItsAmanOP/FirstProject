@@ -5,7 +5,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 object NetworkUtils {
-    private const val MAX_REDIRECTS = 5
+    private const val MAX_REDIRECTS = 10
 
     @Throws(IOException::class)
     fun post(urlString: String, jsonBody: String, redirectCount: Int = 0): String {

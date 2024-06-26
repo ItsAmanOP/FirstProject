@@ -17,7 +17,7 @@ object OTPWidget {
     }
 
     @JvmStatic
-    fun verifyOTP(widgetId: String, tokenAuth: String, otp: String, reqId: String): String {
+    fun verifyOTP(widgetId: String, tokenAuth: String, reqId: String, otp: String): String {
 
         val payload = JSONObject().apply {
             put("widgetId", widgetId)
@@ -30,13 +30,15 @@ object OTPWidget {
     }
 
     @JvmStatic
-    fun retryOTP(widgetId: String, tokenAuth: String, retryChannel: Number, reqId: String): String {
+    fun retryOTP(widgetId: String, tokenAuth: String, reqId: String, retryChannel: Number? = null): String {
 
         val payload = JSONObject().apply {
             put("widgetId", widgetId)
             put("tokenAuth", tokenAuth)
-            put("retryChannel", retryChannel)
             put("reqId", reqId)
+            retryChannel?.let {
+                put("retryChannel", it)
+            }
         }
 
         return NetworkUtils.post(ApiUrls.retryOTP, payload.toString())
