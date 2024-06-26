@@ -5,6 +5,13 @@ plugins {
     id("maven-publish")
     id("signing")
 }
+
+val sonaTypeUseName: String? = System.getenv("SONATYPE_USER_NAME")
+val sonaTypePassword: String? = System.getenv("SONATYPE_PASSWORD")
+val keyId: String? = System.getenv("GPG_SIGNING_KEY_ID")
+val signingKey: String? = System.getenv("GPG_SIGNING_ARMED_KEY")
+val password: String? = System.getenv("GPG_SIGNING_PASSPHRASE_PASSWORD")
+
 android {
     namespace = "io.ItsAmanOP"
     compileSdk = 34
@@ -43,7 +50,7 @@ dependencies {
 }
 
 group = "io.github.itsamanop"
-version = "1.0.3"
+version = "1.0.4"
 val artifactName = "SendOTP"
 val artifactDescription = "A description of my library"
 val artifactUrl = "https://github.com/ItsAmanOP/SendOTP"
@@ -88,14 +95,16 @@ afterEvaluate {
     }
 
     signing {
-        val keyId = findProperty("signing.keyId") as String
-        val password = findProperty("signing.password") as String
-        val signingKey = findProperty("signing.armoredKey") as String
-        val sonaTypeUseName = findProperty("SONATYPE_USER_NAME") as String
-        val sonaTypePassword = findProperty("SONATYPE_PASSWORD") as String
+
+//        val keyId = findProperty("signing.keyId") as String
+//        val password = findProperty("signing.password") as String
+//        val signingKey = findProperty("signing.armoredKey") as String
+//        val sonaTypeUseName = findProperty("SONATYPE_USER_NAME") as String
+//        val sonaTypePassword = findProperty("SONATYPE_PASSWORD") as String
 //        val secretKeyRingFilePath = findProperty("signing.secretKeyRingFile") as String
 
         println("Key ID: $keyId") // prints correct key (last 8)
+        println("Armed SigningKey: $signingKey")
         println("Password: $password") // prints correct passphrase
         println("SONATYPE_USER_NAME: $sonaTypeUseName")
         println("SONATYPE_PASSWORD: $sonaTypePassword")
