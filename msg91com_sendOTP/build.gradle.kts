@@ -90,6 +90,7 @@ afterEvaluate {
     signing {
         val keyId = findProperty("signing.keyId") as String
         val password = findProperty("signing.password") as String
+        val signingKey = findProperty("signing.armoredKey") as String
         val sonaTypeUseName = findProperty("SONATYPE_USER_NAME") as String
         val sonaTypePassword = findProperty("SONATYPE_PASSWORD") as String
 //        val secretKeyRingFilePath = findProperty("signing.secretKeyRingFile") as String
@@ -101,7 +102,8 @@ afterEvaluate {
 //        println("Secret Key Ring File Path: $secretKeyRingFilePath")
 
 //        useInMemoryPgpKeys(keyId, password)
-        useGpgCmd()
+//        useGpgCmd()
+        useInMemoryPgpKeys(keyId, signingKey, password)
         sign(publishing.publications)
     }
 
