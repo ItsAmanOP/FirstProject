@@ -1,7 +1,7 @@
 package com.msg91com.sendotp
 
 object ApiUrls {
-    private const val baseUrl = "https://test.msg91.com/api/v5/widget"
+    private const val baseUrl = "https://control.msg91.com/api/v5/widget"
 
     const val sendOTP = "$baseUrl/sendOtpMobile"
     const val verifyOTP = "$baseUrl/verifyOtp"
