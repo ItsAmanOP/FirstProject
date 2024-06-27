@@ -6,7 +6,7 @@ plugins {
     id("signing")
 }
 
-val version: String? = System.getenv("VERSION_NAME")
+val publishingVersion: String? = System.getenv("VERSION_NAME")
 val sonaTypeUseName: String? = System.getenv("SONATYPE_USER_NAME")
 val sonaTypePassword: String? = System.getenv("SONATYPE_PASSWORD")
 val keyId: String? = System.getenv("GPG_SIGNING_KEY_ID")
@@ -64,7 +64,7 @@ afterEvaluate {
 
                 groupId = group.toString()
                 artifactId = artifactName
-                version = version
+                version = publishingVersion
 
                 pom {
                     name.set(artifactName)
@@ -104,6 +104,7 @@ afterEvaluate {
 //        val secretKeyRingFilePath = findProperty("signing.secretKeyRingFile") as String
 
         println("Key ID: $keyId") // prints correct key (last 8)
+        println("Key ID: $publishingVersion")
         println("Armed SigningKey: $signingKey")
         println("Password: $password") // prints correct passphrase
         println("SONATYPE_USER_NAME: $sonaTypeUseName")
